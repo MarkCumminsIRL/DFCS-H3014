@@ -57,22 +57,22 @@ git config --global user.email "email_id"
 
 ### 4. Cloning a repository
 
-Now that we've created a GitHub account, installed and configured Git, we can start to actually use Git. With Git we can clone (or copy) existing repositories onto our system so we can use or edit the code locally. Lets try this now by cloning a copy of the securecomms repository from my public GitHub repository. This public project / repository will contain all of the module lab notes and resources for the term, so you'll need to check back regularly to get the latest updates.
+Now that we've created a GitHub account, installed and configured Git, we can start to actually use Git. With Git we can clone (or copy) existing repositories onto our system so we can use or edit the code locally. Lets try this now by cloning a copy of the DFCS-H3014 repository from my public GitHub repository. This public repository will contain all of the module lab notes and resources for the term, so you'll need to check back regularly to get the latest updates.
 
-So to download a project and it's entire version history:
+So to download a repository and it's entire version history:
 
 ```bash
-mkdir College
-cd College
-git clone https://github.com/MarkCumminsIRL/securecomms.git
+mkdir college
+cd college
+git clone https://github.com/MarkCumminsIRL/DFCS-H3014.git
 ```
 
->Hint: The previous command will create a securecomms folder inside the College folder. Feel free to create whatever directory structure to prefer personally.
+>Hint: The previous command will create a DFCS-H3014 folder inside the college folder. Feel free to create whatever directory structure to prefer personally.(Pentesting for example)
 
 If you ever want to update this repository, to make sure you have the latest version of the notes for example. you just need to change into the project folder and run the pull command to pull down all the latest updates.
 
 ```bash
-cd securecomms
+cd ~/college/DFCS-H3014
 git pull
 ```
 
@@ -240,4 +240,8 @@ git remote set-url origin https://github.com/USERNAME/REPOSITORY.git
 ### 10. More information on using and getting started with GitHub
 
 There is plenty more that you can do with Git and GitHub, especially when it comes to teams of people editing the same code, this is where version control really becomes useful. For now we can use it for syncing our project folders as a form of backups for our files. To find out more of the features of Git and GitHub check out the following [resources for learning Git](https://try.github.io/)
+
+
+The entire Pro Git book, written by Scott Chacon and Ben Straub and published by Apress, is available here.
+https://git-scm.com/book/en/v2
 
