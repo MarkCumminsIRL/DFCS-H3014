@@ -17,11 +17,16 @@ ___
 3. Install VMWare Tools
 4. Update your OS and take a snapshot
 5. Renaming our network interfaces for ease of use
+    + 5.1 Adding custom interface names for Kali
+    + 5.2 Adding custom interface names for Ubuntu
+    + 5.3 Changing IP addresses as needed on the command line
 ___
 
 ### 1. Download and install VMware Workstation 15 Pro 
 We'll be using VMware Workstation Pro (Fusion on Mac) as our main hypervisor to run our VMs. Virtualbox is the free alternative but I've found VMware Workstation to be much beter and allows much better networking and snapshot options. If you really prefer to use Virtiualbox or some other alternative for whatever reasons then there shouldn't be any issues. 
 > You should have already received an email link from E-hub or similar to get your copy of VMware Workstation/Fusion Pro. If not let me know and I'll add you.  
+
+
 > I'll be creating new user accounts for the next couple of weeks only, so don't wait to contact me and then expect me to sort you a licence.
 
 ### 2. Choose and install your OS (Kali or Ubuntu) 
@@ -39,13 +44,15 @@ In the labs each week I'll be doing any demos using Ubuntu 19.04, Kali VM is pro
 - Ubuntu Desktop 18.04: https://ubuntu.com/download/desktop/thank-you?version=18.04.3&architecture=amd64 
 
 #### 2.3 Add network adapters
-Regardless of the OS you've chosen I'm going to recommend you add three network adapters. This setup should allow you connect your attack machine to any type of network (wireless, wired, internal) without reconfiguring much.
+Regardless of the OS you've chosen I'm going to recommend you add three network adapters. This setup should allow you connect your attack machine to any type of network (wireless, wired, internal) without reconfiguring much. I'll talked through the differnt network options and the pros and cons and when to use each. 
 
 - Adapter 1 (Wireless Internet): Set to Bridged (goto advanced and record mac the address).
 - Adapter 2 (Internal Host only): Set to 'Host-only' (goto advanced and record mac the address).
 - Adapter 3 (Wired Ethernet): Set to custom vmnet2 (goto advanced and record mac the address).
 
-> Adapter 1 could just as easily be set to NAT, but becuase of a networking restrictions in the college I'm suggesting you use bridged to avoid any issues.
+> Adapter 1 could just as easily be set to NAT, but becuase of a networking restrictions in the college I'm suggesting you use bridged to avoid any issues.  
+
+> Rememeber to record the which mac is connected to which interface as we'll using this these details later.
 
 #### 2.4 Virtual Network Editor
 One of the most common issues I've seen students experience over the years are due to using automatic bridging and then getting connected to a different network interface to what they expected and then carelessly end up scanning the wrong network. We can use VMware's Virtual Network Editor to fine tune our network adapters and what they connect to. The instructions below assume you've created the three adapters I recommended earlier.
@@ -82,15 +89,35 @@ Since this is a clean install you might want to perform some additional tweaks a
 
 
 ### 5. Renaming our network interfaces for ease of use
+Like I mentioned before confusion around network adapters and what they connect to causes huge confusion among students, me suggesting three adapters probably doesn't help the issue! We can try make our lives a little bit easier by adding labels to our interfaces. So naming the interface that connects to our wifi network as my_wifi rather than ens3 or eth0. 
 
-    7.1 The single biggest issue faced by students is confusion about their network interfaces. 
-        - We can try make it a bit easier for ourselves by adding labels to our interfaces.
-    
-    7.2 Adding custom interface names for Kali
+#### 5.1 Adding custom interface names for Kali
+We can check out the names and details of our interfaces by running the 'ip a' command. To renaming your interfaces on Kali follow the steps shown below.
 
-    7.3 Adding custom interface names for Ubuntu
+First create a link file for our wifi interface
+```bash
+$ sudo nano /etc/systemd/network/mywifi.link 
+```
 
-    7.4 Changing IP addresses as needed on the command line
+Next we want to add the following lines, changing the MACAddress and Name to match your our Mac and desired interface name
+```bash
+[Match]
+MACAddress=00:11:22:33:44:55
+
+[Link]
+Name=my_wifi
+```
+
+Repeat the above process for our two other interfaces. So create two new link files and add the MACAddress and Name. Once you've completed all that you need to run the following command:
+
+```bash
+sudo update-initramfs -u 
+```
+This will embed these updated config files into your initramfs, where they will be applied. Your interfaces should now be renamed, you can check with the 'ip a' command.
+
+#### 5.2 Adding custom interface names for Ubuntu
+
+#### 5.3 Changing IP addresses as needed on the command line
 
 
 
@@ -134,15 +161,6 @@ network:
 
 
 https://help.ubuntu.com/lts/serverguide/network-configuration.html
-
-
-cat /etc/systemd/network/10-uplink0.link 
-[Match]
-MACAddress=00:0d:b9:49:8a:18
-
-[Link]
-Name=uplink0
-Don’t forget to run update-initramfs -u afterwards to embed these updated config files into your initramfs, where they will be applied.
 
 
 
