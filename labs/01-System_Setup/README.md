@@ -10,10 +10,10 @@ ___
 
 1. Download and install VMware Workstation 15 Pro
 2. Choose and install an OS (Kali or Ubuntu)
-+ 2.1 Installing Kali Linux
-+ 2.2 Installing Ubuntu Desktop 19.04
-+ 2.3 Add network adapters
-+ 2.4 Virtual Network Editor
+    + 2.1 Installing Kali Linux
+    + 2.2 Installing Ubuntu Desktop 19.04
+    + 2.3 Add network adapters
+    + 2.4 Virtual Network Editor
 3. Install VMWare Tools
 4. Update your OS and take a snapshot
 5. Renaming our network interfaces for ease of use
