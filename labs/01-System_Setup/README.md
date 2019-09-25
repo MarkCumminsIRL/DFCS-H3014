@@ -3,7 +3,7 @@
 In this lab we will start creating our penetration testing setup. I'll step through two different setups, one setup using the linux security distro Kali and a second method using the standard Ubuntu linux distro. Students may also want to check out Parrot OS as an alternative to Kali. We'll be running our attack machines as VMs on your main OS.
 > You are of course free to create your own custom setup using whatever OS you prefer. 
 
-The Kali/Parrot setup come pre-installed with hundreds of security tools so should avoid you having to install tools each week as we progress. The Ubuntu setup will involve you doing a bit more work each week as you'll need to install every tool we use every week. My personal preference after trying many different setups over the past few years is to use Ubuntu and then just install the tools I actually use and need. Keeping an up to date setup and config file allows me to just duplicate my setup where ever and when ever I need, but this can just as easily be done for Kali/Parrot also, I've just found using Ubuntu to be more stable and scalable long term.
+The Kali/Parrot setup come pre-installed with hundreds of security tools so should avoid you having to install tools each week as we progress. The Ubuntu setup will involve you doing a bit more work each week as you'll need to install every tool we use every week. My personal preference after trying many different setups over the past few years is to use Ubuntu and then just install the tools I actually use and need. Keeping an up to date setup and config file allows me to just duplicate my setup wherever and whenever I need, but this can just as easily be done for Kali/Parrot also, I've just found using Ubuntu to be more stable and scalable long term.
 ___
 
 ## Lab Contents
@@ -24,14 +24,14 @@ ___
 ___
 
 ### 1. Download and install VMware Workstation 15 Pro 
-We'll be using VMware Workstation Pro (Fusion on Mac) as our main hypervisor to run our VMs. Virtualbox is the free alternative but I've found VMware Workstation to be much beter and allows much better networking and snapshot options. If you really prefer to use Virtiualbox or some other alternative for whatever reasons then there shouldn't be any issues. 
+We'll be using VMware Workstation Pro (Fusion on Mac) as our main hypervisor to run our VMs. Virtualbox is the free alternative but I've found VMware Workstation to be much better and allows much better networking and snapshot options. If you really prefer to use Virtualbox or some other alternative for whatever reasons then there shouldn't be any issues. 
 > You should have already received an email link from E-hub or similar to get your copy of VMware Workstation/Fusion Pro. If not let me know and I'll add you.  
 
 
 > I'll be creating new user accounts for the next couple of weeks only, so don't wait to contact me and then expect me to sort you a licence.
 
 ### 2. Choose and install your OS (Kali or Ubuntu) 
-In the labs each week I'll be doing any demos using Ubuntu 19.04, Kali VM is probably a better option for the lazy student (or those who just perfer Kali or want to learn the OS) but I won't be troubleshooting an issues people run into while using Kali or other OSs.
+In the labs each week any demos that I do, will be using Ubuntu 19.04. Kali VM is probably a better option for the lazy student (or those who just prefer Kali or want to learn the OS) but I won't be troubleshooting any issues people run into while using Kali or other OS's.
 
 #### 2.1 Installing Kali Linux
 - Installation guides: https://docs.kali.org/category/installation
@@ -45,15 +45,15 @@ In the labs each week I'll be doing any demos using Ubuntu 19.04, Kali VM is pro
 - Ubuntu Desktop 18.04: https://ubuntu.com/download/desktop/thank-you?version=18.04.3&architecture=amd64 
 
 #### 2.3 Add network adapters
-Regardless of the OS you've chosen I'm going to recommend you add three network adapters. This setup should allow you connect your attack machine to any type of network (wireless, wired, internal) without reconfiguring much. I'll talked through the differnt network options and the pros and cons and when to use each. 
+Regardless of the OS you've chosen I'm going to recommend you add three network adapters. This setup should allow you to connect your attack machine to any type of network (wireless, wired, internal) without reconfiguring much. I'll talk through the differnt network options and the pros and cons and when to use each. 
 
-- Adapter 1 (Wireless Internet): Set to Bridged (goto advanced and record mac the address).
-- Adapter 2 (Internal Host only): Set to 'Host-only' (goto advanced and record mac the address).
-- Adapter 3 (Wired Ethernet): Set to custom vmnet2 (goto advanced and record mac the address).
+- Adapter 1 (Wireless Internet): Set to Bridged (goto advanced and record the MAC address).
+- Adapter 2 (Internal Host only): Set to 'Host-only' (goto advanced and record the MAC address).
+- Adapter 3 (Wired Ethernet): Set to custom vmnet2 (goto advanced and record the MAC address).
 
-> Adapter 1 could just as easily be set to NAT, but becuase of a networking restrictions in the college I'm suggesting you use bridged to avoid any issues.  
+> Adapter 1 could just as easily be set to NAT, but because of networking restrictions in the college I'm suggesting you use bridged to avoid any issues.  
 
-> Rememeber to record the which mac is connected to which interface as we'll using this these details later.
+> Remember to record the MAC address that is connected to each interface as we'll be using these details later.
 
 #### 2.4 Virtual Network Editor
 One of the most common issues I've seen students experience over the years are due to using automatic bridging and then getting connected to a different network interface to what they expected and then carelessly end up scanning the wrong network. We can use VMware's Virtual Network Editor to fine tune our network adapters and what they connect to. The instructions below assume you've created the three adapters I recommended earlier.
@@ -63,19 +63,19 @@ One of the most common issues I've seen students experience over the years are d
 - VMnet0 change from bridged/automatic to bridge to your wireless card and apply changes.
 - Add Network VMnet2 and set to bridged with your physical ethernet and apply changes 
 
-> You may not see a physcial ethernet appear if you haven't an ethernet or adapter connected
+> You may not see a physical ethernet appear if you haven't an ethernet or adapter connected
 
-I'll talk through some of the other options available within the network Editor to better help you allocate Ips and assign adapters.
+I'll talk through some of the other options available within the Network Editor to better help you allocate IPs and assign adapters.
 
 ### 3. Install VMWare Tools
-Adding VMware tools (or guest additions on Virtualbox) gives us lots of additional options and much better usability for our VMs, paste and copying betwenn OSs, screen resolutions etc. So it's well worth installing. The latest version of Kali should detect that it is installing as a VM and automatically install some bits to make your life a bit easier.
+Adding VMware tools (or guest additions on Virtualbox) gives us lots of additional options and much better usability for our VMs, paste and copying between OS's, screen resolutions etc. So it's well worth installing. The latest version of Kali should detect that it is installing as a VM and automatically install some bits to make your life a bit easier.
 
 Boot up your VM and then install VMware Tools (VM/Install VMware Tools).
 > Full instructions if needed https://vitux.com/how-to-install-vmware-tools-in-ubuntu/
 
 ### 4. Update your OS and take a snapshot
 It's always good practice to regularly update and upgrade your system.
-> I don't suggest updating/upgrading your sysetm just before an engagement or exam. Always takle a temperary snapshot first just in case something breaks.
+> I don't suggest updating/upgrading your system just before an engagement or exam. Always takle a temporary snapshot first just in case something breaks.
 
 ```bash
 apt-get update && apt-get upgrade -y 
@@ -92,17 +92,17 @@ Since this is a clean install you might want to perform some additional tweaks a
 
 
 ### 5. Renaming our network interfaces for ease of use
-Like I mentioned before confusion around network adapters and what they connect to causes huge confusion among students, me suggesting three adapters probably doesn't help the issue! We can try make our lives a little bit easier by adding labels to our interfaces. So naming the interface that connects to our wifi network as my_wifi rather than ens3 or eth0. 
+Like I mentioned before confusion around network adapters and what they connect to causes huge confusion among students, me suggesting three adapters probably doesn't help the issue! We can try to make our lives a little bit easier by adding labels to our interfaces. So naming the interface that connects to our wifi network as my_wifi rather than ens3 or eth0. 
 
 #### 5.1 Adding custom interface names for Kali
-We can check out the names and details of our interfaces by running the 'ip a' command. To renaming your interfaces on Kali follow the steps shown below.
+We can check out the names and details of our interfaces by running the 'ip a' command. To rename your interfaces on Kali follow the steps shown below.
 
 First create a link file for our wifi interface
 ```bash
 sudo nano /etc/systemd/network/mywifi.link 
 ```
 
-Next we want to add the following lines, changing the MACAddress and Name to match your our Mac and desired interface name
+Next we want to add the following lines, changing the MACAddress and Name to match your own MAC and desired interface name
 ```bash
 [Match]
 MACAddress=00:11:22:33:44:55
