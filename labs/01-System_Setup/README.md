@@ -1,8 +1,9 @@
 # Lab 1: Creating a scalable penetration testing setup 
 
-In this lab we will start creating our penetration testing setup. You are free to create your own custom setup using whatever OS you prefer. I'll step through two different setups, one setup using the linux security distro Kali and a second method using the standard Ubuntu linux distro. Students may also want to check out Parrot OS as an alternative to Kali.
+In this lab we will start creating our penetration testing setup. I'll step through two different setups, one setup using the linux security distro Kali and a second method using the standard Ubuntu linux distro. Students may also want to check out Parrot OS as an alternative to Kali.
+> You are of course free to create your own custom setup using whatever OS you prefer. 
 
-The Kali/Parrot setup come pre-installed with hundreds of security tools so should avoid you having to install tools each week as we progress. The Ubuntu setup will involve you doing a bit more work each each week as you'll need to install every tool we use every week. My personal preference after trying many different setups over the years is to use Ubuntu and then just install the tools I actually use and need. Keeping an upto date setup and config file allows me to just duplicate my setup where ever and when ever I need, but this can just as easily be done for Kali/Parrot also, I've just found using the Ubuntu to be more stable and scalable long term.
+The Kali/Parrot setup come pre-installed with hundreds of security tools so should avoid you having to install tools each week as we progress. The Ubuntu setup will involve you doing a bit more work each each week as you'll need to install every tool we use every week. My personal preference after trying many different setups over the years is to use Ubuntu and then just install the tools I actually use and need. Keeping an up to date setup and config file allows me to just duplicate my setup where ever and when ever I need, but this can just as easily be done for Kali/Parrot also, I've just found using the Ubuntu to be more stable and scalable long term.
 ___
 
 ## Lab Contents
