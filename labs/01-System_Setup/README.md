@@ -224,11 +224,28 @@ Further networking configuration bits can be found here: https://help.ubuntu.com
 Or check out the [Linux IP command cheat sheet](Linux_Networking_Cheat_Sheet.pdf) in this folder
 
 ### 6. Testing your network connections
-lets try and use each of our networking adapters to test our connectivity.
+Assuming that you've managed to complete everything above, lets now try and use each of our networking adapters to test our connectivity.
 
-Check adapeter 1 can connect to the internet
-Check adapter 2 can connect to another VM
-Check adapter 3 can connect to our physcial ethernet
+#### 6.1 Check adapeter 1 can connect to the internet
+So our adapter 1 should be bridged with our wireless card. It should have connected to the college wifi and should have an IP address.
 
+```bash
+ip a show dev my_wifi
+```
+
+We should also be able to access the internet, so open a broswer and test it out.
+
+#### 6.2 Check adapter 2 can connect to another VM
+Our second adapter is set to connect to our internal host only network. and should get an ip from DHCP so again check the status and then try to ping your other VM.
+
+```bash
+ip a show dev my_vms
+```
+> Obviously you'll need a second VM here to ping. So you can use any VM you want just make sure it's adapter is connected to our host only network also.
+
+#### 6.3 Check adapter 3 can connect to our physcial ethernet
+Our final check is to see if our last adapter can connect over our physical ethernet port to another machine. you can use an ethernet cable between two laptop in the laps to try and ping each other. 
+
+> For both machines to ping each other they need to have an IP configured from the same network range, so ensure both laptop use the same range (but not same IP obviously)
 
 
