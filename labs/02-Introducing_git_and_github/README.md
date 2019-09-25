@@ -23,7 +23,7 @@ ___
 ### 1. Create a GitHub account
 
 Start by creating a free GitHub account for ourselves.
-> Hint: We don't actually need GitHub to use Git, we could just store our files and projects on our own servers, but GitHub handles all this for us and allows users world wide to contribute to out project.
+> Hint: We don't actually need GitHub to use Git, we could just store our files and projects on our own servers, but GitHub handles all this for us and allows users world wide to contribute to our project.
 
 So go to the GitHub home page and sign-up for a [new account today](https://github.com).
 > Hint: Your GitHub account can often act as a portfolio for potential employers so choose a username that isn't embarrassing on a CV etc.
@@ -67,7 +67,7 @@ cd college
 git clone https://github.com/MarkCumminsIRL/DFCS-H3014.git
 ```
 
->Hint: The previous command will create a DFCS-H3014 folder inside the college folder. Feel free to create whatever directory structure to prefer personally.(Pentesting for example)
+>Hint: The previous command will create a DFCS-H3014 folder inside the college folder. Feel free to create whatever directory structure you prefer personally.(Pentesting for example)
 
 If you ever want to update this repository, to make sure you have the latest version of the notes for example. you just need to change into the project folder and run the pull command to pull down all the latest updates.
 
@@ -110,7 +110,7 @@ Or we can simply add all files to the list that we need to commit using:
 git add --all
 ```
 
-It also best practice to add a message with each update, just a short message that highlights what changed in this update. 'Fixed bug in login' or similar. Again we can do this using the command:
+It is also best practice to add a message with each update, just a short message that highlights what changed in this update. 'Fixed bug in login' or similar. Again we can do this using the command:
 
 ```bash
 git commit -m "updated readme.md"
@@ -160,7 +160,7 @@ hub create
 
 > Hint: We still need to perform all the other steps described earlier.
 
-### 7. Some examples
+### 6. Some examples
 
 OK, We covered a lot of detail very quickly so lets recap by doing some exercises. In this section we will complete three short exercises, and hopefully by the end of them you will have a much better understanding of working with Git and GitHub.
 
@@ -189,7 +189,7 @@ git pull
 
 #### Exercise 3
 
-Finally Lets update and change some of the files locally and then push back up to the GitHub Server one last time.
+Finally lets update and change some of the files locally and then push back up to the GitHub Server one last time.
 
 ```bash
 git add --all
@@ -197,13 +197,13 @@ git commit -m "some updates"
 git push
 ```
 
-### 8. Fine tuning our workflow
+### 7. Fine tuning our workflow
 
 Using Git can seem very confusing and long winded at first but once you use it regularly it will become second nature to you. You should try to develop a workflow that allows you to check-out the latest version of a project, do your updates and then push the updated files back online once you are finished.
 
 Below I've given a few small hints and tips that might help make your transition to Git and GitHub a bit easier.
 
-#### 8.1 Caching your GitHub password with Git
+#### 7.1 Caching your GitHub password with Git
 If you're cloning GitHub repositories using HTTPS, you can use a credential helper to tell Git to remember your GitHub username and password every time it talks to GitHub. This saves you having to enter your username and password every time you interact with a repository.
 
 Turn on the credential helper so that Git will save your password in memory for some time. By default, Git will cache your password for 15 minutes.
@@ -221,7 +221,7 @@ git config --global credential.helper 'cache --timeout=3600'
 # Set the cache to timeout after 1 hour (setting is in seconds)
 ```
 
-#### 8.2 Switching remote URL's from SSH to HTTPS
+#### 7.2 Switching remote URL's from SSH to HTTPS
 
 You may sometimes need to switch the remote URL for a project. List your existing remotes in order to get the name of the remote you want to change.
 
@@ -237,7 +237,7 @@ Change your remote's URL from SSH to HTTPS with the git remote set-url command.
 git remote set-url origin https://github.com/USERNAME/REPOSITORY.git
 ```
 
-### 10. More information on using and getting started with GitHub
+### 8. More information on using and getting started with GitHub
 
 There is plenty more that you can do with Git and GitHub, especially when it comes to teams of people editing the same code, this is where version control really becomes useful. For now we can use it for syncing our project folders as a form of backups for our files. To find out more of the features of Git and GitHub check out the following [resources for learning Git](https://try.github.io/)
 
