@@ -220,7 +220,7 @@ If you no longer need this configuration and wish to purge all IP configuration 
 ip addr flush eth0
 ```
 
-Further networking configuration bits can be found here: https://help.ubuntu.com/lts/serverguide/network-configuration.html
+Further networking configuration bits can be found here: https://help.ubuntu.com/lts/serverguide/network-configuration.html  
 Or check out the [Linux IP command cheat sheet](Linux_Networking_Cheat_Sheet.pdf) in this folder
 
 ### 6. Testing your network connections
