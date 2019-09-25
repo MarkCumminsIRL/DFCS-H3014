@@ -20,6 +20,7 @@ ___
     + 5.1 Adding custom interface names for Kali
     + 5.2 Adding custom interface names for Ubuntu
     + 5.3 Changing IP addresses as needed on the command line
+6. Testing your networking connections
 ___
 
 ### 1. Download and install VMware Workstation 15 Pro 
@@ -64,6 +65,8 @@ One of the most common issues I've seen students experience over the years are d
 
 > You may not see a physcial ethernet appear if you haven't an ethernet or adapter connected
 
+I'll talk through some of the other options available within the network Editor to better help you allocate Ips and assign adapters.
+
 ### 3. Install VMWare Tools
 Adding VMware tools (or guest additions on Virtualbox) gives us lots of additional options and much better usability for our VMs, paste and copying betwenn OSs, screen resolutions etc. So it's well worth installing. The latest version of Kali should detect that it is installing as a VM and automatically install some bits to make your life a bit easier.
 
@@ -75,7 +78,7 @@ It's always good practice to regularly update and upgrade your system.
 > I don't suggest updating/upgrading your sysetm just before an engagement or exam. Always takle a temperary snapshot first just in case something breaks.
 
 ```bash
-$ apt-get update && apt-get upgrade -y 
+apt-get update && apt-get upgrade -y 
 ```
 
 Now we have a basic working setup we should take a snapshot of our VM (It's going to get messed up at some point!)
@@ -96,7 +99,7 @@ We can check out the names and details of our interfaces by running the 'ip a' c
 
 First create a link file for our wifi interface
 ```bash
-$ sudo nano /etc/systemd/network/mywifi.link 
+sudo nano /etc/systemd/network/mywifi.link 
 ```
 
 Next we want to add the following lines, changing the MACAddress and Name to match your our Mac and desired interface name
@@ -167,24 +170,65 @@ sudo netplan apply
 
 
 #### 5.3 Changing IP addresses as needed on the command line
+The following section describes the process of configuring your systems IP address and default gateway needed for communicating on a local area network and the Internet.
+
+For temporary network configurations, you can use the ip command which is also found on most GNU/Linux operating systems. The ip command allows you to configure settings which take effect immediately, however they are not persistent and will be lost after a reboot.
+
+To temporarily configure an IP address, you can use the ip command in the following manner. Modify the IP address and subnet mask to match your network requirements.
+
+```bash
+sudo ip addr add 10.102.66.200/24 dev eth0
+```
+
+The ip can then be used to set the link up or down.
+
+```bash
+ip link set dev eth0 up
+ip link set dev eth0 down
+```
+
+To verify the IP address configuration of eth0, you can use the ip command in the following manner.
+
+```bash
+$ ip address show dev eth0
+10: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
+    link/ether 00:16:3e:e2:52:42 brd ff:ff:ff:ff:ff:ff link-netnsid 0
+    inet 10.102.66.200/24 brd 10.102.66.255 scope global dynamic eth0
+       valid_lft 2857sec preferred_lft 2857sec
+    inet6 fe80::216:3eff:fee2:5242/64 scope link
+       valid_lft forever preferred_lft forever6
+```
+
+To configure a default gateway, you can use the ip command in the following manner. Modify the default gateway address to match your network requirements.
+
+```bash
+sudo ip route add default via 10.102.66.1
+```
+
+To verify your default gateway configuration, you can use the ip command in the following manner.
+
+```bash
+$ ip route show
+default via 10.102.66.1 dev eth0 proto dhcp src 10.102.66.200 metric 100
+10.102.66.0/24 dev eth0 proto kernel scope link src 10.102.66.200
+10.102.66.1 dev eth0 proto dhcp scope link src 10.102.66.200 metric 100 
+```
+
+If you no longer need this configuration and wish to purge all IP configuration from an interface, you can use the ip command with the flush option as shown below.
+
+```bash
+ip addr flush eth0
+```
+
+Further networking configuration bits can be found here: https://help.ubuntu.com/lts/serverguide/network-configuration.html
 
 
+### 6. Testing your networking connections
+lets try and use each of our networking adapters to test our connectivity.
 
-
-
-ip -c address
-
-
-
-https://help.ubuntu.com/lts/serverguide/network-configuration.html
-
-
-
-setup networking.. and test it...
-connect two laptops together...
-install another vm
-connect to internet
-
+Check adapeter 1 can connect to the internet
+Check adapter 2 can connect to another VM
+Check adapter 3 can connect to our physcial ethernet
 
 
 
