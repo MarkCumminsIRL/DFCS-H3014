@@ -8,28 +8,31 @@ ___
 
 ## Lab Contents
 
-1. Download and install VMware Workstation 15 Pro. 
+1. Download and install VMware Workstation 15 Pro
+2. Choose and install an OS (Kali or Ubuntu)
 ___
 
-### 1. Download and install VMware Workstation 15 Pro. 
+### 1. Download and install VMware Workstation 15 Pro 
 We'll be using VMware Workstation Pro (Fusion on Mac) as our main hypervisor to run our VMs. Virtualbox is the free alternative but I've found VMware Workstation to be much beter and allows much better networking and snapshotting options. If you really prefer to using Virtiualbox for whatever reasons then there shouldn't be any issues. 
 > You should have already received an email link from E-hub or similar to get your copy of VMware Workstation/Fusion Pro. If not let me know and I'll add you.
 > I'll be creating new user accounts for the next couple of weeks only, so don't wait to contact me and then expect me to sort you a licence.
 
 
 
-2. Choose an OS (Kali or Ubuntu) (I'M going to step through the labs using Ubuntu 19.04, Kali VM is probably a better option for the lazy student)
-    
-    2.1 Pick Kali Image to install
-        - Kali linux downloads page: https://www.kali.org/downloads/
-        - Kali 2019.3 64bit VMware VM - https://images.offensive-security.com/virtual-images/kali-linux-2019.3-vmware-amd64.7z
-        - Kali 2019.3 64bit ISO - https://cdimage.kali.org/kali-2019.3/kali-linux-2019.3-amd64.iso
-        - Installation guides: https://docs.kali.org/category/installation
+### 2. Choose and install an OS (Kali or Ubuntu) 
+In the labs each week I'll be doing any demos using Ubuntu 19.04, Kali VM is probably a better option for the lazy student but I won't be troubleshooting an issues people run into while using Kali or other OSs.
 
-    2.2 Pick a Ubuntu Image to install
-        - Ubuntu Desktop 18.04: https://ubuntu.com/download/desktop/thank-you?version=18.04.3&architecture=amd64 
-        - Ubuntu Desktop 19.04: https://ubuntu.com/download/desktop/thank-you?version=19.04&architecture=amd64
-        - Installation guide: https://tutorials.ubuntu.com/tutorial/tutorial-install-ubuntu-desktop?_ga=2.250308998.1265951109.1569279578-306165233.1569279578#0
+#### 2.1 Installing Kali Linux
+- Kali linux downloads page: https://www.kali.org/downloads/
+- Kali 2019.3 64bit VMware VM - https://images.offensive-security.com/virtual-images/kali-linux-2019.3-vmware-amd64.7z
+- Kali 2019.3 64bit ISO - https://cdimage.kali.org/kali-2019.3/kali-linux-2019.3-amd64.iso
+- Installation guides: https://docs.kali.org/category/installation
+        
+#### 2.2 Installing Ubuntu Desktop 19.04
+- Installation guide: https://tutorials.ubuntu.com/tutorial/tutorial-install-ubuntu-desktop?_ga=2.250308998.1265951109.1569279578-306165233.1569279578#0
+- Ubuntu Desktop 18.04: https://ubuntu.com/download/desktop/thank-you?version=18.04.3&architecture=amd64 
+- Ubuntu Desktop 19.04: https://ubuntu.com/download/desktop/thank-you?version=19.04&architecture=amd64
+
 
     2.3 Add network adapters
         - Regardless of the OS you've chosen I'm going to recommend you add three network adapters.
