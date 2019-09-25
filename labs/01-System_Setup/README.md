@@ -185,19 +185,6 @@ connect two laptops together...
 install another vm
 connect to internet
 
-how vmware networking works.
 
 
 
-wget -qO- https://gist.githubusercontent.com/MarkCumminsIRL/5fd0d03e5252a9b80e3986027fe8dd37/raw/a7e23e1bde9421ab3f1dabf3c21cd637081cf21d/setup.sh|bash
-
-
-
-7. Create setup script
-
-8. Create dotfiles
-
-9. Sign-up to Hackthebox.eu
-    
-    6.1 Send me your user details
-11. Look at recon tools.
