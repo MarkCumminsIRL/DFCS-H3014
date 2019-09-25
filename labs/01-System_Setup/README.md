@@ -48,7 +48,7 @@ Regardless of the OS you've chosen I'm going to recommend you add three network 
 > Adapter 1 could just as easily be set to NAT, but becuase of a networking restrictions in the college I'm suggesting you use bridged to avoid any issues.
 
 #### 2.4 Virtual Network Editor
-One of the most common issues I've seen students experience over the years are due to using automatic bridging and then getting connected to a different network/interface to what they expected and then carelessly end up scanning the wrong network. We can use VMware's Virtual Network Editor to fine tune our network adapters and what they connect to. The instructions below assume you've created the three adapters I recommended earlier.
+One of the most common issues I've seen students experience over the years are due to using automatic bridging and then getting connected to a different network interface to what they expected and then carelessly end up scanning the wrong network. We can use VMware's Virtual Network Editor to fine tune our network adapters and what they connect to. The instructions below assume you've created the three adapters I recommended earlier.
 
 - Goto Edit/Virtual network editor on your VMware Workstation.
 - Bottom right corner click change settings.
@@ -58,7 +58,7 @@ One of the most common issues I've seen students experience over the years are d
 > You may not see a physcial ethernet appear if you haven't an ethernet or adapter connected
 
 ### 3. Install VMWare Tools
-Adding VMware tools (or guest additions on Virtualbox) gives us lots of additional options and much better usability for our VMs, paste and copying betwenn OSs, screen resolutions etc. So it's well worth installing. The latest version of Kali should detect that it is installing as a VM and automatically install some bits to make you life a bit easier.
+Adding VMware tools (or guest additions on Virtualbox) gives us lots of additional options and much better usability for our VMs, paste and copying betwenn OSs, screen resolutions etc. So it's well worth installing. The latest version of Kali should detect that it is installing as a VM and automatically install some bits to make your life a bit easier.
 
 Boot up your VM and then install VMware Tools (VM/Install VMware Tools).
 > Full instructions if needed https://vitux.com/how-to-install-vmware-tools-in-ubuntu/
