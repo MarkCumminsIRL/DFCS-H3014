@@ -116,18 +116,15 @@ sudo update-initramfs -u
 This will embed these updated config files into your initramfs, where they will be applied. Your interfaces should now be renamed, you can check with the 'ip a' command.
 
 #### 5.2 Adding custom interface names for Ubuntu
+On Ubuntu we will use the new NetPlan tool to configure our interfaces.
 
-#### 5.3 Changing IP addresses as needed on the command line
+```bash
+sudo nano /etc/netplan/01-network-manager-all.yaml 
+```
 
+Once you've opened the file you can copy the following into it. Remember to use your own MAC addresses from earlier and you can pick your own interface names just replace the names I've suggested if you wish.
 
-
-
-
-ip -c address
-sudo netplan apply
-sudo gedit /etc/netplan/01-network-manager-all.yaml 
-
-# Let NetworkManager manage all devices on this system
+```bash
 network:
   version: 2
   renderer: networkd 
@@ -152,12 +149,31 @@ network:
 #     dhcp4: true
       addresses:
         - 10.10.10.2/24
-      gateway4: 10.10.10.1
-      nameservers:
-        addresses: [8.8.8.8, 8.8.4.4]
+#      gateway4: 10.10.10.1
+#      nameservers:
+#        addresses: [8.8.8.8, 8.8.4.4]
       match:
         macaddress: 00:0c:29:18:7e:63 # Change Mac to match your own interface
       set-name: my_ethernet
+```
+
+> because you are editing/creating a Yaml file make sure you don't use any tabs and use a consistent indentation (I used two spaces for all indents) otherwise you'll get an error
+
+Once you've finished editing the document you just need to apply it using the following command. You'll probably have to restart for the interface names to change, but IP addresses etc should kick in once you've applied the netplan.
+
+```bash
+sudo netplan apply
+```
+
+
+#### 5.3 Changing IP addresses as needed on the command line
+
+
+
+
+
+ip -c address
+
 
 
 https://help.ubuntu.com/lts/serverguide/network-configuration.html
