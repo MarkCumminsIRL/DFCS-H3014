@@ -48,7 +48,7 @@ Regardless of the OS you've chosen I'm going to recommend you add three network 
 > Adapter 1 could just as easily be set to NAT, but becuase of a networking restrictions in the college I'm suggesting you use bridged to avoid any issues.
 
 #### 2.4 Virtual Network Editor
-One of the most common issues I've seen students experience over the years are due to using automatic bridging and then getting connected to a different network/interface to what they expected and then carelessly end up scanning the wrong network. We can VMware's Virtual network editor to fine tune our network adapters and what they connect to. The instructions below assume you've created the three adapters I recommended earlier.
+One of the most common issues I've seen students experience over the years are due to using automatic bridging and then getting connected to a different network/interface to what they expected and then carelessly end up scanning the wrong network. We can use VMware's Virtual Network Editor to fine tune our network adapters and what they connect to. The instructions below assume you've created the three adapters I recommended earlier.
 
 - Goto Edit/Virtual network editor on your VMware Workstation.
 - Bottom right corner click change settings.
