@@ -20,7 +20,7 @@ ___
     + 5.1 Adding custom interface names for Kali
     + 5.2 Adding custom interface names for Ubuntu
     + 5.3 Changing IP addresses as needed on the command line
-6. Testing your networking connections
+6. Testing your network connections
 ___
 
 ### 1. Download and install VMware Workstation 15 Pro 
@@ -223,7 +223,7 @@ ip addr flush eth0
 Further networking configuration bits can be found here: https://help.ubuntu.com/lts/serverguide/network-configuration.html
 
 
-### 6. Testing your networking connections
+### 6. Testing your network connections
 lets try and use each of our networking adapters to test our connectivity.
 
 Check adapeter 1 can connect to the internet
