@@ -1,4 +1,4 @@
-# Lab 1: Introduction to Git and GitHub
+# Lab 2: Introduction to Git and GitHub
 
 In this lab we will learn how to setup and use the open-source version control software Git and the online repository storage from Github.
 
@@ -17,7 +17,6 @@ ___
 6. Some examples
 7. Fine tuning our workflow.
 8. More information.
-9. Lab Summary / Cheat-Sheet.
 
 ___
 
@@ -242,4 +241,3 @@ git remote set-url origin https://github.com/USERNAME/REPOSITORY.git
 
 There is plenty more that you can do with Git and GitHub, especially when it comes to teams of people editing the same code, this is where version control really becomes useful. For now we can use it for syncing our project folders as a form of backups for our files. To find out more of the features of Git and GitHub check out the following [resources for learning Git](https://try.github.io/)
 
-### Lab Summary / Cheat-Sheet
