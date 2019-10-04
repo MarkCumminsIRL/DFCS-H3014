@@ -45,9 +45,9 @@ In the labs each week any demos that I do, will be using Ubuntu 19.04. Kali VM i
 - Ubuntu Desktop 18.04: https://ubuntu.com/download/desktop/thank-you?version=18.04.3&architecture=amd64 
 
 #### 2.3 Add network adapters
-Regardless of the OS you've chosen I'm going to recommend you add three network adapters. This setup should allow you to connect your attack machine to any type of network (wireless, wired, internal) without reconfiguring much. I'll talk through the differnt network options and the pros and cons and when to use each. 
+Regardless of the OS you've chosen I'm going to recommend you add three network adapters. This setup should allow you to connect your attack machine to any type of network (wireless, wired, internal) without reconfiguring much. I'll talk through the different network options and the pros and cons and when to use each. 
 
-- Adapter 1 (Wireless Internet): Set to Bridged (goto advanced and record the MAC address).
+- Adapter 1 (Wireless Internet): Set to NAT (goto advanced and record the MAC address).
 - Adapter 2 (Internal Host only): Set to 'Host-only' (goto advanced and record the MAC address).
 - Adapter 3 (Wired Ethernet): Set to custom vmnet2 (goto advanced and record the MAC address).
 
@@ -75,7 +75,7 @@ Boot up your VM and then install VMware Tools (VM/Install VMware Tools).
 
 ### 4. Update your OS and take a snapshot
 It's always good practice to regularly update and upgrade your system.
-> I don't suggest updating/upgrading your system just before an engagement or exam. Always takle a temporary snapshot first just in case something breaks.
+> I don't suggest updating/upgrading your system just before an engagement or exam. Always take a temporary snapshot first just in case something breaks.
 
 ```bash
 apt-get update && apt-get upgrade -y 
@@ -92,12 +92,12 @@ Since this is a clean install you might want to perform some additional tweaks a
 
 
 ### 5. Renaming our network interfaces for ease of use
-Like I mentioned before confusion around network adapters and what they connect to causes huge confusion among students, me suggesting three adapters probably doesn't help the issue! We can try to make our lives a little bit easier by adding labels to our interfaces. So naming the interface that connects to our wifi network as my_wifi rather than ens3 or eth0. 
+Like I mentioned before confusion around network adapters and what they connect to causes huge confusion among students, me suggesting three adapters probably doesn't help the issue! We can try to make our lives a little bit easier by adding labels to our interfaces. So naming the interface that connects to our WiFi network as my_wifi rather than ens3 or eth0. 
 
 #### 5.1 Adding custom interface names for Kali
 We can check out the names and details of our interfaces by running the 'ip a' command. To rename your interfaces on Kali follow the steps shown below.
 
-First create a link file for our wifi interface
+First create a link file for our WiFi interface
 ```bash
 sudo nano /etc/systemd/network/mywifi.link 
 ```
@@ -226,14 +226,14 @@ Or check out the [Linux IP command cheat sheet](Linux_Networking_Cheat_Sheet.pdf
 ### 6. Testing your network connections
 Assuming that you've managed to complete everything above, lets now try and use each of our networking adapters to test our connectivity.
 
-#### 6.1 Check adapeter 1 can connect to the internet
+#### 6.1 Check adapter 1 can connect to the internet
 So our adapter 1 should be bridged with our wireless card. It should have connected to the college wifi and should have an IP address.
 
 ```bash
 ip a show dev my_wifi
 ```
 
-We should also be able to access the internet, so open a broswer and test it out.
+We should also be able to access the internet, so open a browser and test it out.
 
 #### 6.2 Check adapter 2 can connect to another VM
 Our second adapter is set to connect to our internal host only network. and should get an ip from DHCP so again check the status and then try to ping your other VM.
