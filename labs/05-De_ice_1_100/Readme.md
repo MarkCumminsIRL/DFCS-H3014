@@ -158,6 +158,11 @@ We'll hopefully get a chance to look at more detailed enumeration scripts later 
 OK so it looks like we've exhausted all our other options, time to use what we've found so far to help us attempt a brute force login.
 We could try this against the SSH, POP or IMAP services but SSH seems like the obvious choice.
 
+
+> Download wordlists from https://wiki.skullsecurity.org/Passwords
+> rockypu wordlist is also in this github folder.
+
+
 Step 20. -- Try to brute force the connection using your favourite tool (hydra etc.)
 
 You might have to reduce the number of threads your using as it might over whelm the target. I've given the command I use below.
