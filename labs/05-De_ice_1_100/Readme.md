@@ -83,14 +83,14 @@ Once we've found a list of open ports we would normally check each service versi
 
 In this case we've been told that the network is regularly scanned with Nessus (our go to vulnerability scanner) so it's a safe bet that we won't (or shouldn't) find any vulnerabilities.
 
-So we'll leave this for now.. we might come back to look at it again some other time.
+So we'll leave this for now.. We might come back to look at it again some other time. Normally this would be our next step but in this case a vulnerability yields nothing so we'll skip this step.
 
 
 ---------------------------------------------------------------------------------------------------------
 Stage 3 - Recon (part 1)
 ---------------------------------------------------------------------------------------------------------
 
-While recon is usually the first step of any pen test, the process is circular, as we find more details it gives us more areas to go back and recon. in this case the list of open services.
+While recon is usually the first step of any pentest, the process is circular, as we find more details it gives us more areas to go back and recon. In this case the list of open services.
 
 You should have noticed that both http port 80 and https port 443 are open of the target machine. So lets check out what webpages are there and try get some more info to help with our attack. (http and https can often be different sites)
 
@@ -112,12 +112,10 @@ At this stage you should have the following ports left in your list as possible 
 22/SSH is obviously a good choice to try and use to gain access with, but we'll need to find some user names or passwords to help us.
 25/smtp Seems active also so maybe we can also use this to help us.. maybe use this to help us enumerate usernames.
 80/Web seems to have a basic webpage that is worth looking through for more details that might help us.
-110/143/Pop/imap Both are mail protocols that also allow us to authenticate and maybe login, so these are other options for trying to connect to.
+110/143/Pop/imap are mail protocols that also allow us to authenticate and maybe login, so these are other options for trying to connect to.
 
----------------------------------------------------------------------------------------------------------
-Stage 4 - Recon (part 2)
----------------------------------------------------------------------------------------------------------
 
+## Stage 4 - Recon (part 2)
 Lets go look through the Website and see what we can find. We wont use any fancy tools just basic observation for now.
 
 Step 16. -- Check all pages on the website, looking for anything that might assist us. (don't look at the hints page)
@@ -144,22 +142,19 @@ It might be worth arranging the list in order you think most useful, so admins e
 Step 18. -- Create your own username list based on all the combinations of employee names you can think of.
 
 I tend to use a popular script for this, that creates username lists for you from a input file of firstnames surnames.
-I'll make the script available on Moodle.
+I'll make the script available on Moodle and here on github.
 
 
----------------------------------------------------------------------------------------------------------
-Stage 5 - ENUMERATION
----------------------------------------------------------------------------------------------------------
 
+## Stage 5 - ENUMERATION
 Ok so at this stage we should have a list of possible usernames, Ideally we want to reduce this list as much as possible before we attempt using the list for any brute forcing attempts.
 
-Step 19. -- Attempt to use smtp-user-enum to enumerate any of your usernames, and hence reduce your username list
+Step 19. -- Anyone on Kali can attempt to use smtp-user-enum to enumerate any of your usernames, and hence reduce your username list, if you not on kali don't worry about thisa step for now.
+
+We'll hopefully get a chance to look at more detailed enumeration scripts later in the term.
 
 
----------------------------------------------------------------------------------------------------------
-Stage 6 - BRUTE FORCE
----------------------------------------------------------------------------------------------------------
-
+## Stage 6 - BRUTE FORCE
 OK so it looks like we've exhausted all our other options, time to use what we've found so far to help us attempt a brute force login.
 We could try this against the SSH, POP or IMAP services but SSH seems like the obvious choice.
 
@@ -174,10 +169,7 @@ Step 21. -- Check out and understand what each of the options I've used mean
 Once we've found the first user (-F to exit when user found) we should be able to figure out the username format and we could edit our username list. But it's worth using our new SSH login to see what we can find on the system.
 
 
----------------------------------------------------------------------------------------------------------
-Stage 7 - SSH ONTO TARGET
----------------------------------------------------------------------------------------------------------
-
+## Stage 7 - SSH ONTO TARGET
 At this stage we should have found the weak password for the user bbanter. This reveals to us the username format. but for now lets SSH onto the target as bbanter and see what we can find on the system.
 
 Step 22. -- SSH on the Target system: ssh 192.168.1.100 -l bbanter
@@ -190,10 +182,9 @@ Step 24. -- What group is each user a member of?
 
 We should see that to get access to the shadow file and hence the root password we're going to need to use the aadams account as he is a member of the wheel account which has root permissions.
 
----------------------------------------------------------------------------------------------------------
-Stage 8 - BRUTE FORCE AADAMS ACCOUNT
----------------------------------------------------------------------------------------------------------
 
+
+## Stage 8 - BRUTE FORCE AADAMS ACCOUNT
 We're back to brute forcing the SSH login but this time at least we a specific user account to target.
 
 Step 25. -- Brute force the aadams SSH account
@@ -209,10 +200,8 @@ ssh 192.168.1.100 -l aadams
 
 Step 27. -- Get a copy of the /etc/shadow file
 
----------------------------------------------------------------------------------------------------------
-Stage 9 - GET ROOT PASSWORD
----------------------------------------------------------------------------------------------------------
 
+## Stage 9 - GET ROOT PASSWORD
 We finally have a copy of the shadow file, and we can see the hashed password for the root account.
 Our next step is to try break this hash and get the password.
 
