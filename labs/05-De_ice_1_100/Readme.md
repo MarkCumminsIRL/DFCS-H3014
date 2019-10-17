@@ -2,14 +2,12 @@
 
 
 ## Lab Overview
----
 In this lab we are going to put all of the bits we've covered to date together and perform a mini Pentest against the vulnerable De-ice 1.100 VM.
 
 As part of the walk through we'll also introduce the password brute forcing tools Hydra and Medusa. This Walk through will be a good starting point and template for any further Pentests you need to perform.
 
 
 ## Downloading the iso 
---- 
 Step 0. To perform this lab we need to create a new VM and install the de-ice 1.100 image, there are several versions so make sure to use the 1.100 version.
 
 > Image can be downloaded from here: http://hackingdojo.com/downloads/iso/De-ICE_S1.100.iso
@@ -19,7 +17,6 @@ Step 1. Once downloaded you'll need to create a new 'Other Linux 3.x kernal' VM 
 
 
 ## SCENARIO
----
 The scenario for this LiveCD is that a CEO of a small company has been pressured by the Board of Directors to have a penetration test done within the company. The CEO, believing his company is secure, feels this is a huge waste of money, especially since he already has a company scan their network for vulnerabilities (using nessus). To make the BoD happy, he decides to hire you for a 5-day job; and because he really doesn't believe the company is insecure, he has contracted you to look at only one server - an old system that only has a web-based list of the company's contact information.
 
 The CEO expects you to prove that the admins of the box follow all proper accepted security practices, and that you will not be able to obtain access to the box. Prove to him that a full penetration test of their entire corporation would be the best way to ensure his company is actually following best security practices.
@@ -27,7 +24,6 @@ The CEO expects you to prove that the admins of the box follow all proper accept
 
 
 ## CONFIGURATION
----
 This LiveCD is pre-configured with an IP address of 192.168.1.100
 
 We will need to ensure that both our Attack machine and the De-Ice image are connected to the host only network adapter.
@@ -47,7 +43,6 @@ Step 4. -- Start up both of your VMs
 
 
 ## TESTING OUR SETUP
----
 To check our setup we'll use our ARP scanning tool netdiscover (sudo apt-get install netdiscover if you don't have it installed already)
 
 Step 5. -- Test your setup is working by using netdiscover to see connected devices. netdiscover -r 192.168.1.0/24 (you may need to use -i interface_name )
@@ -57,7 +52,6 @@ Step 6. -- If you don't see the 192.168.1.100 machine listed, then you'll need t
 
 
 ## Stage 1 - Port Scanning
----
 Normally we'd just try and ping our target machine to check if we have connectivity. So let's try it now.
 
 Step 7. -- Ping 192.168.1.100 from our attack machine.
