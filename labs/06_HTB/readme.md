@@ -1,4 +1,4 @@
-# Lab : Getting started with the HacktheBox.eu Website
+# Lab 6: Getting started with the HacktheBox.eu Website
 
 In this lab we will walk through the process of creating a new account and joining the HTB website. The HTB website allows us access to a number of custom VMs that we can practice our attacks against and perfect our pentesting skills.
 
