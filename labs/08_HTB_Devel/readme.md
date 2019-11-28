@@ -162,14 +162,6 @@ Once we have our handler up and running we just need to get the IIS webserver to
 
 ```
 
-Next we need to tell msf that we want to use this exploit.
-
-```bash
-msf5 > use exploit/unix/ftp/vsftpd_234_backdoor
-msf5 exploit(unix/ftp/vsftpd_234_backdoor) > 
-meterpreter > l
-```
-
 Playing around with our meterpreter shell shows it lots we can do, but at the moment we don't have enough permissions to do anything fun or get the text files we need to need to claim the box.
 
 So lets see if there is any way we can raise our privileges.
