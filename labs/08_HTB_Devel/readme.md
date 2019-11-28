@@ -1,6 +1,6 @@
-# HTB Lab: Lame [10.10.10.3]
+# HTB Lab: Devel [10.10.10.5]
 
-In this lab we will again run through our full pen-test process in our attempt to get root access onto the hack the box server called 'Lame'. We will also use this example to get familiar with the metasploit tool.  
+In this lab we will again run through our full pen-test process in our attempt to get root access onto the hack the box server called 'Devel'. We will also use this example to get familiar with the msvenom tool and use metasploit again.  
 ___
 
 ## Lab Contents
@@ -17,41 +17,25 @@ ___
 
 ___
 
-### 1. Download your HTB access credentials.
-To get access onto the HTB network we first need to configure our VPN credentials. We can do this by downloading our 'connection pack' from the access section of the HTB network. This connection pack is essentially an OpenVPn configuration file that will allow us access to the HTB network.
+### 1. Scanning the 'Devel' Server
+ON your HTB online account your should see a link for Dedicated labs > eu-dedicated-6 following this link will show you a list of the currently active HTB servers for you to attempt. We will try connect to the 'Devel' server which you should see in your list and should have an IP of 10.10.10.5.
 
-> Make sure that your HTB lab Access details shows your server as edge-eu-dedicated-6.hackthebox.eu. If not you should click the switch button above this marked eu-dedicated-6 Lab Access. This also assumes that you've been added to the class lab by passing your HTB username to me a couple of weeks ago.
-
-Once you've downloaded your connection pack you should have a file called 'username.ovpn' to use this config file. open a terminal and change into the same folder as you have the .opvn file downloaded and run the command below.
+So the first thing we want do is scan what ports are open on the 'devel' server and verify that we have connectivity to the server. 
 
 ```bash
-sudo openvpn username.ovpn
-```
-
-> Your file will be based on your own username so remember to use the correct file name.
-
-With your VPN connection hopefully now working. You should leave the terminal window open and switch to a new window.
-
-
-### 2. Scanning the 'Lame' Server
-ON your HTB online account your should see a link for Dedicated labs > eu-dedicated-6 following this link will show you a list of the currently active HTB servers for you to attempt. We will try connect to the 'Lame' server which you should see in your list and should have an IP of 10.10.10.3.
-
-So the first thing we want do is scan what ports are open on the 'Lame' server and verify that we have connectivity to the server. 
-
-```bash
-$ sudo namp -sP 10.10.10.3
+$ sudo namp -sP 10.10.10.5
 Starting Nmap 7.80 ( https://nmap.org ) at 2019-11-21 02:06 GMT
-Nmap scan report for 10.10.10.3
+Nmap scan report for 10.10.10.5
 Host is up (0.043s latency).
 Nmap done: 1 IP address (1 host up) scanned in 0.08 seconds
 ```
 
-This command should verify that we have an active connection to the server. (If not go back and troubleshoot the earlier steps) Next we want to do a port scan. We'll do this in parts, first a quick scan and then some longer scans in the background to check for anything hidden.
+This command should verify that we have an active connection to the server. (If not go back and troubleshoot the earlier steps listed in the previous HTB labs) Next we want to do a port scan. 
 
 ```bash
-$ mkdir Lame
-$ cd Lame
-$ sudo nmap -sV 10.10.10.3 -oA lame_quickscan 
+$ mkdir Devel
+$ cd devel
+$ sudo nmap -sC -sV 10.10.10.5 -oA devel 
 Starting Nmap 7.80 ( https://nmap.org ) at 2019-11-21 02:12 GMT
 Nmap scan report for 10.10.10.3
 Host is up (0.039s latency).
